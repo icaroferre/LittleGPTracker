@@ -800,7 +800,9 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
         {
 	        if (useDirtyDownsampling_)
 	        {
-	          i1 =(short *)(((unsigned int)input)&dsMask);
+				intptr_t intptrValue = reinterpret_cast<intptr_t>(input);
+
+	          i1 =(short *)(((unsigned int)intptrValue)&dsMask);
 	        }
           else
 	        {
