@@ -1,5 +1,5 @@
 
-#include "DEBSystem.h"
+#include "RG351PSystem.h"
 #define USE_SDL_AUDIO
 #ifndef _NO_JACK_
 #include "Adapters/Jack/Audio/JackAudio.h"
