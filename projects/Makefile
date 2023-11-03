@@ -289,7 +289,7 @@ RASPIFILES                :=      UnixFileSystem.o \
 RG351PFILES                :=      UnixFileSystem.o \
 										SDLAudio.o \
                                         DEBmain.o \
-                                        DEBSystem.o \
+                                        RGB351PSystem.o \
                                         GUIFactory.o \
                                         SDLGUIWindowImp.o \
                                         SDLEventManager.o \
