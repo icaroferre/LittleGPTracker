@@ -802,7 +802,7 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 	        {
 				intptr_t intptrValue = reinterpret_cast<intptr_t>(input);
 
-	          i1 =(short *)(((unsigned int)intptrValue)&dsMask);
+	          i1 =(short *)((static_cast<unsigned int>(intptrValue))&dsMask);
 	        }
           else
 	        {

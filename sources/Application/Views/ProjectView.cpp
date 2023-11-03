@@ -211,7 +211,8 @@ void ProjectView::Update(Observable &,I_ObservableData *data) {
 
 	intptr_t intptrValue = reinterpret_cast<intptr_t>(data);
 
-	int fourcc=(unsigned int)intptrValue ;
+	// Static cast to unsigned int
+	int fourcc=static_cast<unsigned int>(intptrValue);
 
 	UIField *focus=GetFocus() ;
 	if (fourcc!=ACTION_TEMPO_CHANGED) {

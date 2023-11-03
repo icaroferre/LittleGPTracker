@@ -79,7 +79,7 @@ bool SDLAudioDriver::InitDriver() {
   // Make sure the buffer is aligned
   intptr_t intptrValue = reinterpret_cast<intptr_t>(unalignedMain_);
 
-  mainBuffer_=(char *)((((int)intptrValue)+1)&(0xFFFFFFFC)) ;
+  mainBuffer_=(char *)(((static_cast<int>(intptrValue))+1)&(0xFFFFFFFC)) ;
 
   Trace::Log("AUDIO","%s successfully opened with %d samples",bufferName,fragSize_/4 ) ;
 
