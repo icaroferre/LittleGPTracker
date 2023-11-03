@@ -34,19 +34,19 @@
 #include "Application/Commands/NodeList.h"
 #include "Adapters/SDL/Timer/SDLTimer.h"
 
-EventManager *DEBSystem::eventManager_ = NULL ;
+EventManager *RG351PSystem::eventManager_ = NULL ;
 
-int DEBSystem::MainLoop() {
+int RG351PSystem::MainLoop() {
 	eventManager_->InstallMappings();
 	return eventManager_->MainLoop() ;
 } ;
 
-void DEBSystem::Boot(int argc,char **argv) {
+void RG351PSystem::Boot(int argc,char **argv) {
 
 	SDL_putenv((char *)"SDL_VIDEO_X11_WMCLASS=LittleGPTracker") ;
 
 	// Install System
-	System::Install(new DEBSystem()) ;
+	System::Install(new RG351PSystem()) ;
 
 	// Install FileSystem
 	FileSystem::Install(new UnixFileSystem()) ;
@@ -145,12 +145,12 @@ void DEBSystem::Boot(int argc,char **argv) {
 	eventManager_->MapAppButton("space",APP_BUTTON_START) ;
 } ;
 
-void DEBSystem::Shutdown() {
+void RG351PSystem::Shutdown() {
 } ;
 
 static int secbase=0 ;
 
-unsigned long DEBSystem::GetClock() {
+unsigned long RG351PSystem::GetClock() {
 
    struct timeval tp;
 
@@ -163,23 +163,23 @@ unsigned long DEBSystem::GetClock() {
      return long((tp.tv_sec - secbase)*1000 + tp.tv_usec/1000.0);
 }
 
-void DEBSystem::Sleep(int millisec) {
+void RG351PSystem::Sleep(int millisec) {
 /*	if (millisec>0)
 		::Sleep(millisec) ;
 */}
 
-void *DEBSystem::Malloc(unsigned size) {
+void *RG351PSystem::Malloc(unsigned size) {
 	void *ptr=malloc(size) ;
 //	Trace::Debug("alloc:%x  (%d)",ptr,size) ;
 	return ptr ;
 }
 
-void DEBSystem::Free(void *ptr) {
+void RG351PSystem::Free(void *ptr) {
 //	Trace::Debug("free:%x",ptr) ;
 	free(ptr) ;
 } 
 
-void DEBSystem::Memset(void *addr,char val,int size) {
+void RG351PSystem::Memset(void *addr,char val,int size) {
     intptr_t intptrValue = reinterpret_cast<intptr_t>(addr);
     unsigned int ad=(unsigned int)static_cast<unsigned int>(intptrValue);
     if (((ad&0x3)==0)&&((size&0x3)==0)) { // Are we 4-byte aligned ?
@@ -198,18 +198,18 @@ void DEBSystem::Memset(void *addr,char val,int size) {
     } ;
 } ;
 
-void *DEBSystem::Memcpy(void *s1, const void *s2, int n) {
+void *RG351PSystem::Memcpy(void *s1, const void *s2, int n) {
     return memcpy(s1,s2,n) ;
 } ;  
 
-void DEBSystem::AddUserLog(const char *msg) {
+void RG351PSystem::AddUserLog(const char *msg) {
 	fprintf(stderr,"LOG: %s\n",msg) ;
 };
 
-void DEBSystem::PostQuitMessage() {
+void RG351PSystem::PostQuitMessage() {
 	SDLEventManager::GetInstance()->PostQuitMessage() ;
 } ; 
 
-unsigned int DEBSystem::GetMemoryUsage() {
+unsigned int RG351PSystem::GetMemoryUsage() {
 	return 0 ;
 } ;

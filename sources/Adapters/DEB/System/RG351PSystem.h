@@ -5,7 +5,7 @@
 #include "UIFramework/SimpleBaseClasses/EventManager.h"
 #include <SDL/SDL.h>
 
-class DEBSystem: public System {
+class RG351PSystem: public System {
 public:
 	static void Boot(int argc,char **argv) ;
 	static void Shutdown() ;
