@@ -74,6 +74,10 @@ SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p)
   int screenWidth = 320; 
   int screenHeight = 240;
   windowed_ = false;
+ #elif defined(RG351P)
+  int screenWidth = 480; 
+  int screenHeight = 320;
+  windowed_ = false;
  #else
   int screenWidth = videoInfo->current_w;
   int screenHeight = videoInfo->current_h;
