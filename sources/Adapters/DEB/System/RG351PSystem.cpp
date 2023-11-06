@@ -143,6 +143,8 @@ void RG351PSystem::Boot(int argc,char **argv) {
 	eventManager_->MapAppButton("right ctrl",APP_BUTTON_L) ;
 	eventManager_->MapAppButton("left ctrl",APP_BUTTON_R) ;
 	eventManager_->MapAppButton("space",APP_BUTTON_START) ;
+
+	printf("Finished booting") ;
 } ;
 
 void RG351PSystem::Shutdown() {

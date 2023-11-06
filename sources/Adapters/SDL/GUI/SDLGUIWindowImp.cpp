@@ -75,6 +75,7 @@ SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p)
   int screenHeight = 240;
   windowed_ = false;
  #elif defined(RG351P)
+  printf("RG351P display\n");
   int screenWidth = 480; 
   int screenHeight = 320;
   windowed_ = false;
