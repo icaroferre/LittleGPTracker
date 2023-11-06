@@ -90,20 +90,25 @@ SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p)
  #else
   bitDepth_ = videoInfo->vfmt->BitsPerPixel;
  #endif
+
+	printf("Getting display name");
   
   char driverName[64] ;
   SDL_VideoDriverName(driverName,64);
+  printf("Driver name: %s\n", driverName);
   
   Trace::Log("DISPLAY","Using driver %s. Screen (%d,%d) Bpp:%d",driverName,screenWidth,screenHeight,bitDepth_);
   
   bool fullscreen=false ;
   
+  printf("Setting fullscreen");
   const char *fullscreenValue=Config::GetInstance()->GetValue("FULLSCREEN") ;
   if ((fullscreenValue)&&(!strcmp(fullscreenValue,"YES")))
   {
   	fullscreen=true ;
   }
-  
+
+  printf("Setting caption");  
   SDL_WM_SetCaption("LittleGPTracker","lgpt");
 	
   if (!strcmp(driverName, "fbcon"))
@@ -139,6 +144,7 @@ SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p)
   screenRect_._bottomRight._y=windowed_?appHeight*mult_:screenHeight;
 
   Trace::Log("DISPLAY","Creating SDL Window (%d,%d)",screenRect_.Width(), screenRect_.Height());
+  printf("Creating SDL Window (%d,%d)\n",screenRect_.Width(), screenRect_.Height());
 	screen_ = SDL_SetVideoMode(screenRect_.Width(),screenRect_.Height(),bitDepth_ ,fullscreen?SDL_FULLSCREEN:SDL_HWSURFACE);
 	NAssert(screen_) ;
 
@@ -147,7 +153,10 @@ SDLGUIWindowImp::SDLGUIWindowImp(GUICreateWindowParams &p)
 	appAnchorX_=(screenRect_.Width()-appWidth*mult_)/2 ;
 	appAnchorY_=(screenRect_.Height()-appHeight*mult_)/2 ;
 
+	printf("App anchor: %d,%d\n",appAnchorX_,appAnchorY_);
+
 	SDL_WM_SetIcon(SDL_LoadBMP("lgpt_icon.bmp"), NULL);
+	printf("Icon set\n");
 
     Uint32 rmask, gmask, bmask, amask;
 
