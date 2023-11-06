@@ -78,8 +78,13 @@ bool SDLAudioDriver::InitDriver() {
   unalignedMain_=(char *)SYS_MALLOC(fragSize_+SOUND_BUFFER_MAX) ;
   // Make sure the buffer is aligned
   intptr_t intptrValue = reinterpret_cast<intptr_t>(unalignedMain_);
+// Print intptrValue
+	printf("intptrValue: %d\n", intptrValue);
 
   mainBuffer_=(char *)(((static_cast<int>(intptrValue))+1)&(0xFFFFFFFC)) ;
+
+  // print MainBuffer
+  printf("mainBuffer_: %d\n", mainBuffer_);
 
   Trace::Log("AUDIO","%s successfully opened with %d samples",bufferName,fragSize_/4 ) ;
 
