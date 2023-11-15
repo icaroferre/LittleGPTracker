@@ -113,6 +113,8 @@ bool RTAudioDriver::InitDriver() {
 	miniBlank_=(char *)malloc(fragSize_) ;
 	SYS_MEMSET(miniBlank_,0,fragSize_) ;
 
+	printf("intptrValue: %d\n", intptrValue);
+
 	return true ;
 } ;
 
