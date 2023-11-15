@@ -3,7 +3,10 @@
 %.rpi-exe: $(OFILES)
 	$(CXX) -o $(LDFLAGS) $@ $(OFILES) $(LIBS)
 
-CFLAGS := -O3 -DCPP_MEMORY -Wall -I/usr/local/include -I$(PWD)/../sources -D__LINUX_ALSA__ -DUSE_SDL_AUDIO -DBUFFERED -D_NO_JACK_ -D_NDEBUG -DRG351P
+
+SDL_CFLAGS  := $(shell $(SYSROOT)/usr/bin/sdl-config --cflags)
+SDL_LIBS    := $(shell $(SYSROOT)/usr/bin/sdl-config --libs)
+CFLAGS := -O3 -DCPP_MEMORY -Wall -I/usr/local/include -I$(PWD)/../sources  $(INCLUDES) $(SDL_CFLAGS) $(SDL_LIBS) -D__LINUX_ALSA__ -DUSE_SDL_AUDIO -DBUFFERED -D_NO_JACK_ -D_NDEBUG -DRG351P
 #CFLAGS	:= -g -DCPP_MEMORY -Wall -I/usr/local/include -I$(PWD)/../sources -D__LINUX_ALSA__ -D__LINUX_ALSASEQ__ -D_NO_JACK_ -DRG351P
  
 

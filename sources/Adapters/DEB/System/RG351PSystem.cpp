@@ -182,22 +182,22 @@ void RG351PSystem::Free(void *ptr) {
 } 
 
 void RG351PSystem::Memset(void *addr,char val,int size) {
-    intptr_t intptrValue = reinterpret_cast<intptr_t>(addr);
-    unsigned int ad=(unsigned int)static_cast<unsigned int>(intptrValue);
-    if (((ad&0x3)==0)&&((size&0x3)==0)) { // Are we 4-byte aligned ?
-        unsigned int intVal=0 ;
-        for (int i=0;i<4;i++) {
-             intVal=(intVal<<8)+val ;  
-        }
-        unsigned int *dst=(unsigned int *)addr ;
-        size_t intSize=size>>2 ;
+    // intptr_t intptrValue = reinterpret_cast<intptr_t>(addr);
+    // unsigned int ad=(unsigned int)static_cast<unsigned int>(intptrValue);
+    // if (((ad&0x3)==0)&&((size&0x3)==0)) { // Are we 4-byte aligned ?
+    //     unsigned int intVal=0 ;
+    //     for (int i=0;i<4;i++) {
+    //          intVal=(intVal<<8)+val ;  
+    //     }
+    //     unsigned int *dst=(unsigned int *)addr ;
+    //     size_t intSize=size>>2 ;
 
-        for (unsigned int i=0;i<intSize;i++) {
-            *dst++=intVal ;
-        }
-    } else {
-        memset(addr,val,size) ;
-    } ;
+    //     for (unsigned int i=0;i<intSize;i++) {
+    //         *dst++=intVal ;
+    //     }
+    // } else {
+	memset(addr,val,size) ;
+    // } ;
 } ;
 
 void *RG351PSystem::Memcpy(void *s1, const void *s2, int n) {
